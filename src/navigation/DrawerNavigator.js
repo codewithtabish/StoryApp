@@ -1,19 +1,21 @@
 import React from 'react';
-import { ScrollView, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import BookMarkStack from '../screens/DrawerScreen/BookMark/BookMarkStack';
 import SubMainNavigator from './SubMainNavigator';
 import Faviourite from '../screens/DrawerScreen/Faviourate/Faviourite';
 import BookMark from '../screens/DrawerScreen/BookMark/BookMark';
+import { bannderImage, storyImage } from '../static/image';
+import { responsiveScreenHeight } from 'react-native-responsive-dimensions';
 
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
   return (
     <ScrollView>
-      <View style={{ backgroundColor: '#007ACC', padding: 20,marginTop:0, height: 200, flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-        <Text style={{ fontSize: 24, color: 'white' }}>Drawer Header</Text>
+      <View style={{ marginTop:0, height: responsiveScreenHeight(25), flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+        <Image src={bannderImage} style={{height:'100%',width:'100%'}}/>
       </View>
       <DrawerContentScrollView {...props}>
         <DrawerItem

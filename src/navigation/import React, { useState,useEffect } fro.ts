@@ -10,11 +10,10 @@ import {
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { storyImage } from '../../static/image';
 import { useTheme } from 'react-native-paper';
-import { Entypo,Ionicons ,MaterialCommunityIcons} from '@expo/vector-icons';
+import { Entypo,Ionicons } from '@expo/vector-icons';
 import { useSelector,useDispatch } from 'react-redux';
 import { selectIsDarkMode, toggleAppMode } from '../../redux/reducer/appSlice';
-import { MaterialIcons } from '@expo/vector-icons';
-import { responsiveHeight, responsiveScreenFontSize, responsiveScreenHeight, responsiveScreenWidth, responsiveWidth } from 'react-native-responsive-dimensions';
+import { responsiveHeight, responsiveScreenFontSize, responsiveScreenHeight, responsiveScreenWidth } from 'react-native-responsive-dimensions';
 
 const SingleStory = () => {
   const [myFontSize, setMyFontSize] = useState(16); // Initial font size
@@ -43,7 +42,14 @@ useEffect(() => {
     headerStyle:{
       backgroundColor:theme.colors.appBarColor
     },
-  
+    headerLeft:()=>{
+      return (
+        <TouchableOpacity style={{marginHorizontal:10,marginRight:25,}}
+        onPress={() => navi.toggleDrawer()}>
+           <Ionicons name="ios-menu" size={32} color="white" /> 
+        </TouchableOpacity>
+      )
+    },
     headerRight:()=>{
      return(
        <View style={{display:"flex",gap:10,flexDirection:"row"}}>
@@ -65,7 +71,7 @@ useEffect(() => {
   // Handle scrolling and showing/hiding the header
   const handleScroll = (event) => {
     const offsetY = event.nativeEvent.contentOffset.y;
-    const scrollThreshold = 0.2 * event.nativeEvent.layoutMeasurement.height;
+    const scrollThreshold = 0.25 * event.nativeEvent.layoutMeasurement.height;
 
     if (offsetY >= scrollThreshold) {
       setshowHeader(!showHeader)
@@ -76,7 +82,14 @@ useEffect(() => {
     headerStyle:{
       backgroundColor:theme.colors.appBarColor
     },
-
+    headerLeft:()=>{
+      return (
+        <TouchableOpacity style={{marginHorizontal:10,marginRight:25,}}
+        onPress={() => navi.toggleDrawer()}>
+           <Ionicons name="ios-menu" size={32} color="white" /> 
+        </TouchableOpacity>
+      )
+    },
     headerRight:()=>{
      return(
        <View style={{display:"flex",gap:10,flexDirection:"row"}}>
@@ -108,39 +121,15 @@ useEffect(() => {
       <View
       style={styles.topTitle}
       >
-         <View style={{flexDirection:"row",alignItems:"center",
-        width:responsiveWidth(90),
-        justifyContent:"space-between",marginHorizontal:responsiveScreenWidth(0)}}>
-           <TouchableOpacity style={{width:33,height:33,borderRadius:16,
-          backgroundColor:theme.colors.appBarColor,flexDirection:"row",justifyContent:"center",
-          alignItems:"center"}}>
-            <MaterialCommunityIcons name="skip-previous" size={24} color="white" />
-          </TouchableOpacity>
-         
-            <Text style={styles.title}>{item?.title}</Text>
-             <TouchableOpacity style={{width:33,height:33,borderRadius:16,
-          backgroundColor:theme.colors.appBarColor,flexDirection:"row",justifyContent:"center",
-          alignItems:"center"}}>
-            <MaterialIcons name="skip-next" size={24} color="white" />
-          </TouchableOpacity>
-         </View>
+           <Text style={styles.title}>{item?.title}</Text>
       </View>
    
       </View>
-  <View style={[{backgroundColor:theme.colors.background,
-      width:responsiveScreenWidth(100)
-      },styles.largeCon]}>
-        <View style={[{backgroundColor:theme.colors.cardBackgroundColor,padding:responsiveScreenWidth(2),
-        marginHorizontal:responsiveScreenWidth(4),
-        marginVertical:responsiveScreenHeight(3),
-        
-      
-      },styles.myRadius]}>
-         <Text style={[styles.storyContent, { fontSize: myFontSize,color:theme.colors.cardTextColor }]}>
+      <View style={{backgroundColor:theme.colors.background,padding:responsiveScreenWidth(2),}}>
+         <Text style={[styles.storyContent, { fontSize: myFontSize,color:theme.colors.text }]}>
         {item?.content}
       </Text>
       </View>
-  </View>
     
      
     </ScrollView>
@@ -151,12 +140,10 @@ export default SingleStory;
 
 const styles = StyleSheet.create({
   storyContent: {
-    fontSize: 14, // Set your initial font size here
-    lineHeight: responsiveHeight(5),
+    fontSize: 16, // Set your initial font size here
+    lineHeight: 24,
     margin: 16,
     textAlign: 'justify',
-    fontStyle:"italic"
-    
   },
   topTitle:{
     position:"absolute",
@@ -175,14 +162,7 @@ const styles = StyleSheet.create({
     fontSize:responsiveScreenFontSize(3),
     fontWeight:"bold",
     textAlign:"center",
-    width:'85%',
+    width:'50%',
     lineHeight:responsiveScreenHeight(4)
-  },
-  largeCon:{
-    minHeight:responsiveScreenHeight(64)
-  },
-  myRadius:{
-    borderTopRightRadius:50,
-    borderTopLeftRadius:50
   }
 });

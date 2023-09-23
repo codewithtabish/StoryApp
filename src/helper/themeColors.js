@@ -14,15 +14,15 @@ export const customLightColors = {
 
 export const customDarkColors = {
   primary: 'green', // Light Purple
-    appBarColor: '#1c2841', // Slightly lighter than '#121212'
+  appBarColor: '#1c2841', // Slightly lighter than '#121212'
   accent: '#03dac4', // Turquoise
   background: '#1c2841', // Dark Gray
   surface: '#1e1e1e', // Darker Gray
-  text: '#ffffff', // White
+  text: '#F5F5F5', // White
   error: '#cf6679', // Light Red
   onBackground: '#ffffff', // White
   onSurface: '#ffffff', // White
   cardBackgroundColor:"#293B5D",
-  cardTextColor:"white"
+  cardTextColor:"#F5F5F5"
 
 };

@@ -42,7 +42,7 @@ const StoryCard = ({item}) => {
         fontSize:responsiveScreenFontSize(2)}}>{item?.title.length>25?item.title.slice(0,25)+"...":item?.title}</Text>
      </View>
       <View>
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           {
             isDarkMode?
                 <MaterialIcons name="favorite-border" size={24} color={theme.colors.text} 
@@ -50,7 +50,7 @@ const StoryCard = ({item}) => {
                     <MaterialIcons name="favorite-border" size={24} color={theme.colors.appBarColor} />
           }
       
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       </TouchableOpacity>

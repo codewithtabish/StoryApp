@@ -29,6 +29,9 @@ const InnerSingleStory = ({item}) => {
     })
   }
 
+  const handleFav=()=>{
+  }
+
 
 
   return (
@@ -42,7 +45,8 @@ const InnerSingleStory = ({item}) => {
         fontSize:responsiveScreenFontSize(2)}}>{item?.title.length>25?item.title.slice(0,25)+"...":item?.title}</Text>
      </View>
       <View>
-        <TouchableOpacity>
+        <TouchableOpacity
+        onPress={handleFav}>
           {
             isDarkMode?
                 <MaterialIcons name="favorite-border" size={24} color={theme.colors.text} 

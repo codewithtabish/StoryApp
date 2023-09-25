@@ -110,19 +110,19 @@ useEffect(() => {
       >
          <View style={{flexDirection:"row",alignItems:"center",
         width:responsiveWidth(90),
-        justifyContent:"space-between",marginHorizontal:responsiveScreenWidth(0)}}>
-           <TouchableOpacity style={{width:33,height:33,borderRadius:16,
+        justifyContent:"center",marginHorizontal:responsiveScreenWidth(0)}}>
+           {/* <TouchableOpacity style={{width:33,height:33,borderRadius:16,
           backgroundColor:theme.colors.appBarColor,flexDirection:"row",justifyContent:"center",
           alignItems:"center"}}>
             <MaterialCommunityIcons name="skip-previous" size={24} color="white" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
          
             <Text style={styles.title}>{item?.title}</Text>
-             <TouchableOpacity style={{width:33,height:33,borderRadius:16,
+             {/* <TouchableOpacity style={{width:33,height:33,borderRadius:16,
           backgroundColor:theme.colors.appBarColor,flexDirection:"row",justifyContent:"center",
           alignItems:"center"}}>
             <MaterialIcons name="skip-next" size={24} color="white" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
          </View>
       </View>
    
@@ -131,7 +131,7 @@ useEffect(() => {
       width:responsiveScreenWidth(100)
       },styles.largeCon]}>
         <View style={[{backgroundColor:theme.colors.cardBackgroundColor,padding:responsiveScreenWidth(2),
-        marginHorizontal:responsiveScreenWidth(4),
+        marginHorizontal:responsiveScreenWidth(2),
         marginVertical:responsiveScreenHeight(3),
         
       

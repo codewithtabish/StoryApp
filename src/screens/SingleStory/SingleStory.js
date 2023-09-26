@@ -102,7 +102,7 @@ useEffect(() => {
          style={{ width: '100%', height: responsiveHeight(30),resizeMode:"cover"}}
       >
           <Image
-       src={storyImage}
+       source={require('../../../assets//images/kids.jpg')}
         style={{ width: '100%', height: responsiveHeight(30),resizeMode:"cover"}}
       />
       <View

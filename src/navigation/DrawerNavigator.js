@@ -8,42 +8,58 @@ import Faviourite from '../screens/DrawerScreen/Faviourate/Faviourite';
 import BookMark from '../screens/DrawerScreen/BookMark/BookMark';
 import { bannderImage, storyImage } from '../static/image';
 import { responsiveScreenHeight } from 'react-native-responsive-dimensions';
+import { useTheme } from 'react-native-paper';
+import { selectIsDarkMode } from '../redux/reducer/appSlice';
+import { useSelector } from 'react-redux';
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
+    // const navi=useNavigation()
+ const  theme=useTheme()
+  const appMode=useSelector(selectIsDarkMode)
+
   return (
-    <ScrollView>
+    <ScrollView style={{backgroundColor:theme.colors.background}}>
       <View style={{ marginTop:0, height: responsiveScreenHeight(25), flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-        <Image src={bannderImage} style={{height:'100%',width:'100%'}}/>
+        <Image src={bannderImage} style={{height:'100%',width:'100%'}}
+        />
       </View>
-      <DrawerContentScrollView {...props}>
+      <DrawerContentScrollView {...props}
+      >
         <DrawerItem
           label="Home"
-          icon={({ color, size }) => <Icon name="home" color={color} size={size} />}
+          labelStyle={{color:theme.colors.text}}
+          icon={({ color, size }) => <Ionicons name="home-outline" size={24} color={theme.colors.text} />}
           onPress={() => props.navigation.navigate('Home')}
         />
         <DrawerItem
-          label="Bookmark"
-          icon={({ color, size }) => <Icon name="bookmark" color={color} size={size} />}
+          label="Favourite"
+             labelStyle={{color:theme.colors.text}}
+          icon={({ color, size }) => <MaterialIcons name="favorite-border" size={24} color={theme.colors.text} />
+        }
           onPress={() => props.navigation.navigate('BookMark')}
         />
-        <DrawerItem
-          label="Favorite"
-          icon={({ color, size }) => <Icon name="star" color={color} size={size} />}
-          onPress={() => props.navigation.navigate('Faviourite')}
-        />
-        <View style={styles.separator}></View>
+      
+        <View style={[styles.separator,{backgroundColor:theme.colors.text}]}></View>
         <DrawerItem
           label="Share"
-          icon={({ color, size }) => <Icon name="share" color={color} size={size} />}
+             labelStyle={{color:theme.colors.text}}
+          icon={({ color, size }) => <MaterialCommunityIcons name="share-outline" size={24} color={theme.colors.text} />
+        }
           onPress={() => {
             // Implement share functionality here
           }}
         />
         <DrawerItem
           label="About Developer"
-          icon={({ color, size }) => <Icon name="user" color={color} size={size} />}
+             labelStyle={{color:theme.colors.text}}
+          icon={({ color, size }) =><Ionicons name="person-outline" size={24} color={theme.colors.text} />
+        }
           onPress={() => {
             // Implement about developer functionality here
           }}
@@ -55,8 +71,7 @@ function CustomDrawerContent(props) {
 
 const styles = StyleSheet.create({
   separator: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
+    borderBottomWidth: .3,
     marginVertical: 10,
   },
 });

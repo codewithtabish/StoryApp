@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View, useColorScheme } from 'react-native'
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import DrawerNavigator from './DrawerNavigator';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { customDarkColors, customLightColors, darkColors, lightColors } from '../helper/themeColors';
 import { MD3LightTheme ,MD3DarkTheme, PaperProvider } from 'react-native-paper';
-import { useSelector } from 'react-redux';
-import { selectIsDarkMode } from '../redux/reducer/appSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { assignToFavArray, myFacArray, selectIsDarkMode } from '../redux/reducer/appSlice';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Stack = createNativeStackNavigator();
@@ -14,8 +15,22 @@ const Stack = createNativeStackNavigator();
 
 
 const MainNavigator = () => {
+    const dispatch=useDispatch()
+
   const colorSchema=useColorScheme()
   const isDarkMode=useSelector(selectIsDarkMode)
+
+    const assignToArray=async()=>{
+    const array=await AsyncStorage.getItem('favstory')
+    dispatch(assignToFavArray(JSON.parse(array)))
+  }
+
+  
+  useEffect(() => {
+    assignToArray()
+   
+  }, [])
+  
 
   
    const lightSchemes={

@@ -9,7 +9,8 @@ export const customLightColors = {
   onBackground: '#000000', // Black
   onSurface: '#000000', // Black
   cardBackgroundColor:"#fff",
-  cardTextColor:"blue"
+  cardTextColor:"blue",
+  lineColor:"#ddd"
 };
 
 export const customDarkColors = {
@@ -23,6 +24,7 @@ export const customDarkColors = {
   onBackground: '#ffffff', // White
   onSurface: '#ffffff', // White
   cardBackgroundColor:"#293B5D",
-  cardTextColor:"#F5F5F5"
+  cardTextColor:"#F5F5F5",
+  lineColor:"white"
 
 };

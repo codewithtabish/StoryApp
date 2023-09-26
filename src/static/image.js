@@ -5,3 +5,4 @@ export const storyImage=
 
 
 export const bannderImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn5zwCwRt1YVtdsDEG05Sg3oGdTxBvqLAxTF77NqpwenPnRc_m&s"
+

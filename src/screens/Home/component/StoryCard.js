@@ -7,11 +7,12 @@ import {
   responsiveHeight,
   responsiveWidth
 } from "react-native-responsive-dimensions"
-import { useTheme } from 'react-native-paper'
+import { Avatar, useTheme } from 'react-native-paper'
 import { MaterialIcons } from '@expo/vector-icons';
 import { useSelector,useDispatch } from 'react-redux';
 import { selectIsDarkMode } from '../../../redux/reducer/appSlice';
 import { useNavigation } from '@react-navigation/native'
+
 
 
 const StoryCard = ({item}) => {
@@ -34,12 +35,16 @@ const StoryCard = ({item}) => {
       <TouchableOpacity style={[styles.cardTouchContainer,{backgroundColor:theme.colors.cardBackgroundColor,
       flexDirection:"row",alignItems:"center",justifyContent:"space-between"}]}
       onPress={navigateToStoryList}>
-     <View style={{flexDirection:"row",gap:responsiveWidth(3),alignItems:"center"}}>
-         <Image source={{uri:item?.image}} width={width} height={height}
+     <View style={{flexDirection:"row",gap:responsiveWidth(2),alignItems:"center"}}>
+        <Avatar.Image size={50} source={item?.image} style={{borderRadius:5,
+        backgroundColor:theme.colors.cardBackgroundColor}} 
+        />
+
+         {/* <Image source={{uri:item?.image}} width={width} height={height}
         style={{resizeMode:"contain",borderRadius:borderRadius,alignItems:"center",
-        }}/>
+        }}/> */}
         <Text style={{color:theme?.colors?.cardTextColor,
-        fontSize:responsiveScreenFontSize(2)}}>{item?.title.length>25?item.title.slice(0,25)+"...":item?.title}</Text>
+        fontSize:responsiveScreenFontSize(2)}}>{item?.title?.length>25?item?.title?.slice(0,25)+"...":item?.title}</Text>
      </View>
       <View>
         {/* <TouchableOpacity>

@@ -15,6 +15,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Developer from '../screens/DrawerScreen/Developer';
+import * as Sharing from 'expo-sharing';
 
 // import Share from 'react-native-share';
 
@@ -23,23 +24,20 @@ const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
 
-
     // const navi=useNavigation()
  const  theme=useTheme()
   const appMode=useSelector(selectIsDarkMode)
 
-   const shareApp = async () => {
-    // try {
-    //   const options = {
-    //     message: 'Check out this cool app!',
-    //     url: 'https://your-app-download-url.com', // Replace with your app's URL
-    //   };
-    //   await Share.open(options);
-    // } catch (error) {
-    //   console.error('Error sharing:', error);
-    // }
-  }
-  
+const shareContent = async () => {
+  // try {
+  //   const message = 'Check out my awesome app!';
+  //   const url = 'https://docs.expo.dev/versions/latest/sdk/sharing/'; // Placeholder link
+  //   await Sharing?.shareAsync(`${message} ${url}`);
+  // } catch (error) {
+  //   console.error('Error sharing:', error);
+  // }
+};
+
 
   return (
     <ScrollView style={{backgroundColor:theme.colors.background}}>
@@ -69,7 +67,7 @@ function CustomDrawerContent(props) {
              labelStyle={{color:theme.colors.text}}
           icon={({ color, size }) => <MaterialCommunityIcons name="share-outline" size={24} color={theme.colors.text} />
         }
-          onPress={shareApp}
+          onPress={shareContent}
         />
         <DrawerItem
           label="About Developer"

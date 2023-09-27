@@ -151,9 +151,9 @@ useEffect(() => {
       
       },styles.myRadius]}>
          <Text style={[styles.storyContent, {fontSize:responsiveScreenFontSize(2.4),color:theme.colors.text,
-        fontFamily:"CormorantGaramond-SemiBoldItalic"
+        // fontFamily:"CormorantGaramond-SemiBoldItalic"
          }]}>
-        {item?.content}
+        {item?.content.trim()}
       </Text>
       </View>
   </View>

@@ -7,7 +7,7 @@ import InnerSingleStory from '../../AllStories/components/InnerSingleStory'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useTheme } from 'react-native-paper'
 import { Entypo,Ionicons } from '@expo/vector-icons';
-import { responsiveScreenHeight } from 'react-native-responsive-dimensions'
+import { responsiveScreenHeight, responsiveScreenWidth } from 'react-native-responsive-dimensions'
 
 const BookMark = () => {
    const favArray=useSelector(myFacArray)
@@ -45,13 +45,11 @@ const BookMark = () => {
      
     headerRight:()=>{
      return(
-       <View style={{display:"flex",gap:10,flexDirection:"row"}}>
+       <View style={{display:"flex",marginRight:responsiveScreenWidth(5),flexDirection:"row"}}>
         <TouchableOpacity onPress={handlePress}>
             <Entypo name="light-down" size={24} color="white" />
         </TouchableOpacity>
-       <TouchableOpacity>
-         <Entypo name="dots-three-vertical" size={24} color="white" />
-       </TouchableOpacity>
+     
       </View>
      )
     }

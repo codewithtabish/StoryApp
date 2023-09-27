@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View ,StatusBar, FlatList} from 'react-native'
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from '@expo/vector-icons'; // Import the icon library (you may need to install it)
 import { useTheme } from 'react-native-paper';
@@ -10,6 +10,8 @@ import { selectIsDarkMode, toggleAppMode } from '../../redux/reducer/appSlice';
 import { Entypo } from '@expo/vector-icons';
 import stories from '../../static/stories';
 import StoryCard from './component/StoryCard';
+import {  Menu, IconButton } from 'react-native-paper';
+import { responsiveWidth } from 'react-native-responsive-dimensions';
 
 
 
@@ -18,6 +20,10 @@ const HomeScreen = () => {
  const  theme=useTheme()
   const dispatch=useDispatch()
   const appMode=useSelector(selectIsDarkMode)
+  const [visible, setVisible] = useState(false);
+
+  const openMenu = () => setVisible(true);
+  const closeMenu = () => setVisible(false);
 
  const handlePress=()=>{
   dispatch(toggleAppMode(!appMode))
@@ -41,13 +47,13 @@ const HomeScreen = () => {
     },
     headerRight:()=>{
      return(
-       <View style={{display:"flex",gap:10,flexDirection:"row"}}>
+       <View style={{display:"flex",marginRight:responsiveWidth(5),flexDirection:"row",alignItems:"center"}}>
         <TouchableOpacity onPress={handlePress}>
             <Entypo name="light-down" size={24} color="white" />
         </TouchableOpacity>
-       <TouchableOpacity>
-         <Entypo name="dots-three-vertical" size={24} color="white" />
-       </TouchableOpacity>
+      
+   
+      
       </View>
      )
     }

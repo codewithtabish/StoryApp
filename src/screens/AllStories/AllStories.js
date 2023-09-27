@@ -44,13 +44,11 @@ const AllStories = () => {
      
     headerRight:()=>{
      return(
-       <View style={{display:"flex",gap:10,flexDirection:"row"}}>
+       <View style={{display:"flex",marginRight:responsiveScreenWidth(5),flexDirection:"row"}}>
         <TouchableOpacity onPress={handlePress}>
             <Entypo name="light-down" size={24} color="white" />
         </TouchableOpacity>
-       <TouchableOpacity>
-         <Entypo name="dots-three-vertical" size={24} color="white" />
-       </TouchableOpacity>
+   
       </View>
      )
     }

@@ -15,6 +15,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import { myBannerImage, selectIsDarkMode, toggleAppMode } from '../../redux/reducer/appSlice';
 import { MaterialIcons } from '@expo/vector-icons';
 import { responsiveHeight, responsiveScreenFontSize, responsiveScreenHeight, responsiveScreenWidth, responsiveWidth } from 'react-native-responsive-dimensions';
+import { useFonts } from 'expo-font';
 
 const SingleStory = () => {
   const [myFontSize, setMyFontSize] = useState(16); // Initial font size
@@ -25,6 +26,10 @@ const SingleStory = () => {
   const appMode=useSelector(selectIsDarkMode)
   const bannerImage=useSelector(myBannerImage)
    const  theme=useTheme()
+   const [fontsLoaded] = useFonts({
+    "CormorantGaramond-Bold":require('../../../assets/fonts/CormorantGaramond-Bold.ttf'),
+    "CormorantGaramond-BoldItalic":require('../../../assets/fonts/CormorantGaramond-BoldItalic.ttf')
+   })
   const item = route?.params?.item;
 
   // Handle increasing the text font size
@@ -36,6 +41,8 @@ const SingleStory = () => {
   dispatch(toggleAppMode(!appMode))
 
  }
+
+
 useEffect(() => {
   navigation.setOptions({
     headerShown:showHeader,
@@ -80,13 +87,11 @@ useEffect(() => {
 
     headerRight:()=>{
      return(
-       <View style={{display:"flex",gap:10,flexDirection:"row"}}>
+       <View style={{display:"flex",marginRight:responsiveScreenWidth(5),flexDirection:"row"}}>
         <TouchableOpacity onPress={handlePress}>
             <Entypo name="light-down" size={24} color="white" />
         </TouchableOpacity>
-       <TouchableOpacity>
-         <Entypo name="dots-three-vertical" size={24} color="white" />
-       </TouchableOpacity>
+   
       </View>
      )
     }
@@ -96,6 +101,13 @@ useEffect(() => {
       navigation.setOptions({ headerShown: false });
     }
   };
+
+
+
+  
+ if(!fontsLoaded){
+  return undefined
+ }
 
   return (
     <ScrollView onScroll={handleScroll} scrollEventThrottle={16}>
@@ -133,12 +145,14 @@ useEffect(() => {
       width:responsiveScreenWidth(100)
       },styles.largeCon]}>
         <View style={[{backgroundColor:theme.colors.cardBackgroundColor,padding:responsiveScreenWidth(1),
-        marginHorizontal:responsiveScreenWidth(1.2),
+        marginHorizontal:responsiveScreenWidth(2),
         marginVertical:responsiveScreenHeight(1.5),
         
       
       },styles.myRadius]}>
-         <Text style={[styles.storyContent, { fontSize: myFontSize,color:theme.colors.cardTextColor }]}>
+         <Text style={[styles.storyContent, {fontSize:responsiveScreenFontSize(2.4),color:theme.colors.text,
+        fontFamily:"CormorantGaramond-SemiBoldItalic"
+         }]}>
         {item?.content}
       </Text>
       </View>
@@ -153,9 +167,8 @@ export default SingleStory;
 
 const styles = StyleSheet.create({
   storyContent: {
-    fontSize: 14, // Set your initial font size here
     lineHeight: responsiveHeight(5),
-    margin: 16,
+    margin: responsiveScreenWidth(3),
     textAlign: 'justify',
     fontStyle:"italic"
     

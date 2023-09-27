@@ -14,14 +14,32 @@ import { useSelector } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Developer from '../screens/DrawerScreen/Developer';
+
+// import Share from 'react-native-share';
 
 
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
+
+
     // const navi=useNavigation()
  const  theme=useTheme()
   const appMode=useSelector(selectIsDarkMode)
+
+   const shareApp = async () => {
+    // try {
+    //   const options = {
+    //     message: 'Check out this cool app!',
+    //     url: 'https://your-app-download-url.com', // Replace with your app's URL
+    //   };
+    //   await Share.open(options);
+    // } catch (error) {
+    //   console.error('Error sharing:', error);
+    // }
+  }
+  
 
   return (
     <ScrollView style={{backgroundColor:theme.colors.background}}>
@@ -51,18 +69,15 @@ function CustomDrawerContent(props) {
              labelStyle={{color:theme.colors.text}}
           icon={({ color, size }) => <MaterialCommunityIcons name="share-outline" size={24} color={theme.colors.text} />
         }
-          onPress={() => {
-            // Implement share functionality here
-          }}
+          onPress={shareApp}
         />
         <DrawerItem
           label="About Developer"
              labelStyle={{color:theme.colors.text}}
           icon={({ color, size }) =><Ionicons name="person-outline" size={24} color={theme.colors.text} />
         }
-          onPress={() => {
-            // Implement about developer functionality here
-          }}
+         onPress={() => props.navigation.navigate('Developer')}
+        
         />
       </DrawerContentScrollView>
     </ScrollView>
@@ -86,6 +101,7 @@ const DrawerNavigator = () => {
       options={{headerShown:false}} />
       <Drawer.Screen name="BookMark" component={BookMark} />
       <Drawer.Screen name="Faviourite" component={Faviourite} />
+      <Drawer.Screen name='Developer' component={Developer}/>
     </Drawer.Navigator>
   )
 }

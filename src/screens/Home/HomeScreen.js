@@ -11,7 +11,7 @@ import { Entypo } from '@expo/vector-icons';
 import stories from '../../static/stories';
 import StoryCard from './component/StoryCard';
 import {  Menu, IconButton } from 'react-native-paper';
-import { responsiveWidth } from 'react-native-responsive-dimensions';
+import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
 
@@ -71,10 +71,12 @@ const HomeScreen = () => {
 
   return (
     <View style={[styles.container,{backgroundColor:theme?.colors?.background}]}>
-      <FlatList
+   <View style={{height:responsiveHeight(90)}}>
+       <FlatList
       data={stories}
       renderItem={({item})=><StoryCard item={item}/>}
       />
+   </View>
           <StatusBar
         backgroundColor={theme.colors.appBarColor} // Background color (red in this example)
         barStyle="light-content" // Light text/icons on a dark background

@@ -12,10 +12,14 @@ import stories from '../../static/stories';
 import StoryCard from './component/StoryCard';
 import {  Menu, IconButton } from 'react-native-paper';
 import { responsiveWidth } from 'react-native-responsive-dimensions';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
 
 
 const HomeScreen = () => {
+     const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-2101779718159669/9966218491';
+     
+
   const navi=useNavigation()
  const  theme=useTheme()
   const dispatch=useDispatch()
@@ -75,6 +79,14 @@ const HomeScreen = () => {
         backgroundColor={theme.colors.appBarColor} // Background color (red in this example)
         barStyle="light-content" // Light text/icons on a dark background
       />
+          <BannerAd
+      unitId={adUnitId}
+      size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+      requestOptions={{
+        requestNonPersonalizedAdsOnly: true,
+      }}
+    />
+
       {/* <StatusBar style={{backgroundColor:"red"}}/> */}
    
     </View>

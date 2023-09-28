@@ -13,12 +13,14 @@ import { Entypo,Ionicons } from '@expo/vector-icons';
 import { useSelector,useDispatch } from 'react-redux';
 import { selectIsDarkMode, toggleAppMode } from '../../redux/reducer/appSlice';
 import InnerSingleStory from './components/InnerSingleStory'
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
 
 
 
 
 const AllStories = () => {
+    const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-2101779718159669/9966218491';
   const route=useRoute()
   const theme=useTheme()
   const item=route?.params?.item
@@ -66,7 +68,13 @@ const AllStories = () => {
       data={item?.innerStoriesList}
       renderItem={({item})=><InnerSingleStory item={item}/>}
       />
-  
+           <BannerAd
+      unitId={adUnitId}
+      size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+      requestOptions={{
+        requestNonPersonalizedAdsOnly: true,
+      }}
+    />
     </View>
   )
 }

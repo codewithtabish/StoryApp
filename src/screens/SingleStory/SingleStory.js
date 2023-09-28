@@ -16,8 +16,10 @@ import { myBannerImage, selectIsDarkMode, toggleAppMode } from '../../redux/redu
 import { MaterialIcons } from '@expo/vector-icons';
 import { responsiveHeight, responsiveScreenFontSize, responsiveScreenHeight, responsiveScreenWidth, responsiveWidth } from 'react-native-responsive-dimensions';
 import { useFonts } from 'expo-font';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
 const SingleStory = () => {
+       const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-2101779718159669/9966218491';
   const [myFontSize, setMyFontSize] = useState(16); // Initial font size
   const [showHeader, setshowHeader] = useState(false)
   const route = useRoute();
@@ -157,7 +159,13 @@ useEffect(() => {
       </Text>
       </View>
   </View>
-    
+            <BannerAd
+      unitId={adUnitId}
+      size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+      requestOptions={{
+        requestNonPersonalizedAdsOnly: true,
+      }}
+    />
      
     </ScrollView>
   );

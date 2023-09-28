@@ -8,8 +8,10 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { useTheme } from 'react-native-paper'
 import { Entypo,Ionicons } from '@expo/vector-icons';
 import { responsiveScreenHeight, responsiveScreenWidth } from 'react-native-responsive-dimensions'
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
 const BookMark = () => {
+    const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-2101779718159669/9966218491';
    const favArray=useSelector(myFacArray)
      const route=useRoute()
   const theme=useTheme()
@@ -71,11 +73,18 @@ const BookMark = () => {
 
    }
   return (
-    <View style={[styles.container,{backgroundColor:theme.colors.background,minHeight:responsiveScreenHeight(100)}]}>
+    <View style={[styles.container,{backgroundColor:theme.colors.background,height:responsiveScreenHeight(85)}]}>
       <FlatList
       data={favArray}
       renderItem={({item})=><InnerSingleStory item={item}/>}
       />
+       <BannerAd
+      unitId={adUnitId}
+      size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+      requestOptions={{
+        requestNonPersonalizedAdsOnly: true,
+      }}
+    />
   
     </View>
   )

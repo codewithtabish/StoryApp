@@ -62,13 +62,13 @@ const shareContent = async () => {
         />
       
         <View style={[styles.separator,{backgroundColor:theme.colors.text}]}></View>
-        <DrawerItem
+        {/* <DrawerItem
           label="Share"
              labelStyle={{color:theme.colors.text}}
           icon={({ color, size }) => <MaterialCommunityIcons name="share-outline" size={24} color={theme.colors.text} />
         }
           onPress={shareContent}
-        />
+        /> */}
         <DrawerItem
           label="About Developer"
              labelStyle={{color:theme.colors.text}}

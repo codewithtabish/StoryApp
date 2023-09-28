@@ -21,10 +21,22 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.tabish9988.StoryDummy"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7cfc70ee-2600-4d1a-b43b-d9240dccac39"
+      }
     }
+  },
+  
+  
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-2101779718159669~6601688550"
   }
-}
+
+  }

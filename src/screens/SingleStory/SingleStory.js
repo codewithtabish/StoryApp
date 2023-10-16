@@ -19,8 +19,8 @@ import { useFonts } from 'expo-font';
 import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
 const SingleStory = () => {
-       const adUnitId = __DEV__ ? TestIds.BANNER : TestIds.BANNER
-      //  'ca-app-pub-2101779718159669/9966218491';
+       const adUnitId = __DEV__ ? TestIds.BANNER : 
+       'ca-app-pub-2101779718159669/9966218491';
   const [myFontSize, setMyFontSize] = useState(16); // Initial font size
   const [showHeader, setshowHeader] = useState(false)
   const route = useRoute();

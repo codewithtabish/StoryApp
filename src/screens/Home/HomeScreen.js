@@ -37,7 +37,7 @@ const HomeScreen = () => {
   navi.setOptions({
     headerShown:true,
     headerTintColor:"white",
-    headerTitle:"English Stories",
+    headerTitle:"English Stories YES",
     headerStyle:{
       backgroundColor:theme.colors.appBarColor
     },
@@ -71,7 +71,7 @@ const HomeScreen = () => {
 
   return (
     <View style={[styles.container,{backgroundColor:theme?.colors?.background}]}>
-   <View style={{height:responsiveHeight(90)}}>
+   <View>
        <FlatList
       data={stories}
       renderItem={({item})=><StoryCard item={item}/>}

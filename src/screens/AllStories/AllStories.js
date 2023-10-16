@@ -20,7 +20,8 @@ import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads'
 
 
 const AllStories = () => {
-    const adUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-2101779718159669/9966218491';
+    const adUnitId = __DEV__ ? TestIds.BANNER : TestIds.BANNER
+    // 'ca-app-pub-2101779718159669/9966218491';
   const route=useRoute()
   const theme=useTheme()
   const item=route?.params?.item
